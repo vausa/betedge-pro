@@ -1,0 +1,1848 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>BetEdge Pro — Elite Sports Betting Tips</title>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Mono:wght@300;400;500&family=Cabinet+Grotesk:wght@400;500;700;900&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #050810;
+    --bg2: #080d1a;
+    --bg3: #0d1428;
+    --card: #0f1830;
+    --card2: #131e38;
+    --border: rgba(0,210,255,0.12);
+    --border2: rgba(255,255,255,0.06);
+    --neon: #00d2ff;
+    --neon2: #7b2fff;
+    --gold: #ffd166;
+    --green: #06ffa5;
+    --red: #ff4d6d;
+    --orange: #ff9f1c;
+    --text: #e8f0ff;
+    --muted: #7a8baa;
+    --glow: 0 0 40px rgba(0,210,255,0.15);
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'Cabinet Grotesk', sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    min-height: 100vh;
+    overflow-x: hidden;
+  }
+
+  /* Animated bg grid */
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image:
+      linear-gradient(rgba(0,210,255,0.03) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(0,210,255,0.03) 1px, transparent 1px);
+    background-size: 60px 60px;
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  /* Orbs */
+  .orb {
+    position: fixed;
+    border-radius: 50%;
+    filter: blur(120px);
+    pointer-events: none;
+    z-index: 0;
+    opacity: 0.35;
+    animation: orbFloat 12s ease-in-out infinite alternate;
+  }
+  .orb1 { width: 600px; height: 600px; background: radial-gradient(circle, #7b2fff, transparent); top: -200px; right: -100px; animation-delay: 0s; }
+  .orb2 { width: 500px; height: 500px; background: radial-gradient(circle, #00d2ff, transparent); bottom: 10%; left: -100px; animation-delay: 4s; }
+  .orb3 { width: 400px; height: 400px; background: radial-gradient(circle, #06ffa5, transparent); top: 50%; right: 10%; opacity: 0.15; animation-delay: 8s; }
+
+  @keyframes orbFloat {
+    from { transform: translate(0,0) scale(1); }
+    to { transform: translate(30px, 40px) scale(1.08); }
+  }
+
+  /* Noise overlay */
+  body::after {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+    pointer-events: none;
+    z-index: 1;
+    opacity: 0.4;
+  }
+
+  /* ===== NAV ===== */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 1000;
+    padding: 16px 40px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: rgba(5,8,16,0.7);
+    backdrop-filter: blur(24px);
+    border-bottom: 1px solid var(--border);
+  }
+
+  .logo {
+    font-family: 'Syne', sans-serif;
+    font-weight: 800;
+    font-size: 1.5rem;
+    letter-spacing: -0.02em;
+    background: linear-gradient(135deg, var(--neon), var(--neon2));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    cursor: pointer;
+  }
+
+  .logo span {
+    color: var(--gold);
+    -webkit-text-fill-color: var(--gold);
+  }
+
+  .nav-links {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+  }
+
+  .nav-link {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.78rem;
+    color: var(--muted);
+    text-decoration: none;
+    padding: 8px 14px;
+    border-radius: 8px;
+    transition: all 0.2s;
+    cursor: pointer;
+    background: none;
+    border: none;
+    letter-spacing: 0.05em;
+  }
+  .nav-link:hover { color: var(--text); background: rgba(255,255,255,0.05); }
+
+  .btn { display: inline-flex; align-items: center; gap: 8px; padding: 10px 22px; border-radius: 10px; font-family: 'Cabinet Grotesk', sans-serif; font-weight: 700; font-size: 0.9rem; cursor: pointer; transition: all 0.25s; border: none; text-decoration: none; }
+  .btn-primary { background: linear-gradient(135deg, var(--neon), var(--neon2)); color: #050810; }
+  .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 8px 32px rgba(0,210,255,0.4); }
+  .btn-ghost { background: transparent; border: 1px solid var(--border); color: var(--text); }
+  .btn-ghost:hover { border-color: var(--neon); color: var(--neon); background: rgba(0,210,255,0.05); }
+  .btn-gold { background: linear-gradient(135deg, var(--gold), #ff9f1c); color: #050810; }
+  .btn-gold:hover { transform: translateY(-2px); box-shadow: 0 8px 32px rgba(255,209,102,0.4); }
+
+  /* ===== LAYOUT ===== */
+  main { position: relative; z-index: 2; padding-top: 80px; }
+
+  .container { max-width: 1280px; margin: 0 auto; padding: 0 24px; }
+
+  section { padding: 80px 0; }
+
+  h1, h2, h3 { font-family: 'Syne', sans-serif; letter-spacing: -0.03em; }
+
+  /* ===== HERO ===== */
+  .hero {
+    min-height: 90vh;
+    display: flex;
+    align-items: center;
+    padding: 80px 24px 40px;
+    max-width: 1280px;
+    margin: 0 auto;
+  }
+
+  .hero-inner { max-width: 700px; }
+
+  .badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 6px 16px;
+    border-radius: 100px;
+    border: 1px solid rgba(6,255,165,0.3);
+    background: rgba(6,255,165,0.06);
+    font-family: 'DM Mono', monospace;
+    font-size: 0.72rem;
+    color: var(--green);
+    margin-bottom: 28px;
+    letter-spacing: 0.08em;
+  }
+
+  .badge .dot { width: 6px; height: 6px; border-radius: 50%; background: var(--green); animation: pulse 2s infinite; }
+
+  @keyframes pulse { 0%,100% { opacity:1; transform:scale(1); } 50% { opacity:0.5; transform:scale(1.4); } }
+
+  .hero h1 {
+    font-size: clamp(2.8rem, 6vw, 5rem);
+    line-height: 1.05;
+    margin-bottom: 24px;
+    font-weight: 800;
+  }
+
+  .hero h1 .line2 {
+    background: linear-gradient(90deg, var(--neon), var(--neon2), var(--gold));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+
+  .hero p {
+    font-size: 1.15rem;
+    color: var(--muted);
+    line-height: 1.7;
+    max-width: 520px;
+    margin-bottom: 40px;
+  }
+
+  .hero-actions { display: flex; gap: 12px; flex-wrap: wrap; margin-bottom: 60px; }
+
+  .stats-row {
+    display: flex;
+    gap: 40px;
+    padding-top: 32px;
+    border-top: 1px solid var(--border2);
+    flex-wrap: wrap;
+  }
+
+  .stat-item { }
+  .stat-num {
+    font-family: 'Syne', sans-serif;
+    font-size: 2rem;
+    font-weight: 800;
+    color: var(--text);
+  }
+  .stat-num span { color: var(--neon); }
+  .stat-label { font-family: 'DM Mono', monospace; font-size: 0.72rem; color: var(--muted); margin-top: 2px; letter-spacing: 0.05em; }
+
+  /* ===== TICKER ===== */
+  .ticker-wrap {
+    overflow: hidden;
+    background: linear-gradient(90deg, var(--neon2), var(--neon), var(--green), var(--gold), var(--neon2));
+    padding: 10px 0;
+  }
+
+  .ticker-inner {
+    display: flex;
+    gap: 60px;
+    animation: ticker 30s linear infinite;
+    white-space: nowrap;
+  }
+
+  .ticker-item {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.75rem;
+    color: #050810;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  @keyframes ticker { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+
+  /* ===== SECTION HEADERS ===== */
+  .section-tag {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.72rem;
+    letter-spacing: 0.15em;
+    color: var(--neon);
+    text-transform: uppercase;
+    margin-bottom: 12px;
+  }
+
+  .section-title {
+    font-size: clamp(1.8rem, 3.5vw, 2.8rem);
+    font-weight: 800;
+    margin-bottom: 16px;
+  }
+
+  .section-sub {
+    color: var(--muted);
+    font-size: 1rem;
+    line-height: 1.7;
+    max-width: 560px;
+    margin-bottom: 48px;
+  }
+
+  /* ===== CARDS ===== */
+  .card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 20px;
+    padding: 28px;
+    transition: all 0.3s;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .card::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg, rgba(0,210,255,0.04), transparent);
+    pointer-events: none;
+  }
+
+  .card:hover {
+    border-color: rgba(0,210,255,0.3);
+    transform: translateY(-4px);
+    box-shadow: var(--glow);
+  }
+
+  /* ===== TIPS GRID ===== */
+  .tips-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+    gap: 20px;
+  }
+
+  .tip-card { cursor: pointer; }
+
+  .tip-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 16px;
+  }
+
+  .sport-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 4px 12px;
+    border-radius: 100px;
+    font-size: 0.72rem;
+    font-family: 'DM Mono', monospace;
+    font-weight: 500;
+    letter-spacing: 0.05em;
+  }
+
+  .badge-football { background: rgba(6,255,165,0.12); color: var(--green); border: 1px solid rgba(6,255,165,0.25); }
+  .badge-basketball { background: rgba(255,159,28,0.12); color: var(--orange); border: 1px solid rgba(255,159,28,0.25); }
+  .badge-tennis { background: rgba(0,210,255,0.12); color: var(--neon); border: 1px solid rgba(0,210,255,0.25); }
+  .badge-rugby { background: rgba(255,77,109,0.12); color: var(--red); border: 1px solid rgba(255,77,109,0.25); }
+  .badge-cricket { background: rgba(255,209,102,0.12); color: var(--gold); border: 1px solid rgba(255,209,102,0.25); }
+
+  .odds-chip {
+    font-family: 'Syne', sans-serif;
+    font-weight: 800;
+    font-size: 1.1rem;
+    color: var(--gold);
+    background: rgba(255,209,102,0.08);
+    border: 1px solid rgba(255,209,102,0.2);
+    padding: 4px 12px;
+    border-radius: 8px;
+  }
+
+  .tip-match {
+    font-family: 'Syne', sans-serif;
+    font-weight: 700;
+    font-size: 1.1rem;
+    margin-bottom: 6px;
+  }
+
+  .tip-pick {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    color: var(--neon);
+    font-size: 0.85rem;
+    font-weight: 600;
+    margin-bottom: 12px;
+  }
+
+  .tip-analysis {
+    color: var(--muted);
+    font-size: 0.88rem;
+    line-height: 1.6;
+    margin-bottom: 18px;
+  }
+
+  .tip-footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-top: 16px;
+    border-top: 1px solid var(--border2);
+  }
+
+  .poster-info {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .avatar {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    font-size: 0.8rem;
+    flex-shrink: 0;
+  }
+
+  .poster-name { font-size: 0.82rem; font-weight: 600; }
+  .tip-time { font-family: 'DM Mono', monospace; font-size: 0.7rem; color: var(--muted); }
+
+  .confidence {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-family: 'DM Mono', monospace;
+    font-size: 0.72rem;
+    color: var(--muted);
+  }
+
+  .conf-dots { display: flex; gap: 3px; }
+  .conf-dot { width: 7px; height: 7px; border-radius: 50%; }
+  .conf-dot.active { background: var(--green); }
+  .conf-dot.inactive { background: var(--border); }
+
+  .status-win { color: var(--green); font-family: 'DM Mono', monospace; font-size: 0.72rem; font-weight: 600; }
+  .status-loss { color: var(--red); font-family: 'DM Mono', monospace; font-size: 0.72rem; font-weight: 600; }
+  .status-pending { color: var(--gold); font-family: 'DM Mono', monospace; font-size: 0.72rem; font-weight: 600; }
+
+  /* ===== EVENTS ===== */
+  .events-tabs {
+    display: flex;
+    gap: 4px;
+    margin-bottom: 32px;
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 4px;
+    display: inline-flex;
+  }
+
+  .tab-btn {
+    padding: 10px 24px;
+    border-radius: 8px;
+    border: none;
+    font-family: 'Cabinet Grotesk', sans-serif;
+    font-weight: 600;
+    font-size: 0.88rem;
+    cursor: pointer;
+    transition: all 0.2s;
+    background: none;
+    color: var(--muted);
+  }
+
+  .tab-btn.active {
+    background: linear-gradient(135deg, var(--neon), var(--neon2));
+    color: #050810;
+  }
+
+  .events-list { display: flex; flex-direction: column; gap: 12px; }
+
+  .event-row {
+    display: grid;
+    grid-template-columns: 1fr auto auto auto;
+    align-items: center;
+    gap: 20px;
+    padding: 20px 28px;
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    transition: all 0.25s;
+  }
+
+  .event-row:hover { border-color: rgba(0,210,255,0.25); }
+
+  .event-match-name {
+    font-family: 'Syne', sans-serif;
+    font-weight: 700;
+    font-size: 1rem;
+    margin-bottom: 4px;
+  }
+
+  .event-meta {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    flex-wrap: wrap;
+  }
+
+  .event-date {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.72rem;
+    color: var(--muted);
+  }
+
+  .event-result {
+    font-family: 'Syne', sans-serif;
+    font-weight: 800;
+    font-size: 1.2rem;
+    text-align: center;
+  }
+
+  /* ===== PAYMENT ===== */
+  .payment-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+  }
+
+  .payment-card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 20px;
+    padding: 36px;
+    text-align: center;
+    cursor: pointer;
+    transition: all 0.3s;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .payment-card.mpesa { border-color: rgba(6,255,165,0.25); }
+  .payment-card.crypto { border-color: rgba(255,209,102,0.25); }
+
+  .payment-card:hover { transform: translateY(-6px); }
+  .payment-card.mpesa:hover { box-shadow: 0 20px 60px rgba(6,255,165,0.15); }
+  .payment-card.crypto:hover { box-shadow: 0 20px 60px rgba(255,209,102,0.15); }
+
+  .payment-icon {
+    width: 80px;
+    height: 80px;
+    border-radius: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 20px;
+    font-size: 2rem;
+  }
+
+  .mpesa .payment-icon { background: rgba(6,255,165,0.1); border: 1px solid rgba(6,255,165,0.25); }
+  .crypto .payment-icon { background: rgba(255,209,102,0.1); border: 1px solid rgba(255,209,102,0.25); }
+
+  .payment-title {
+    font-family: 'Syne', sans-serif;
+    font-weight: 800;
+    font-size: 1.4rem;
+    margin-bottom: 8px;
+  }
+
+  .mpesa .payment-title { color: var(--green); }
+  .crypto .payment-title { color: var(--gold); }
+
+  .payment-desc { color: var(--muted); font-size: 0.9rem; line-height: 1.6; margin-bottom: 24px; }
+
+  .crypto-icons { display: flex; justify-content: center; gap: 12px; margin-bottom: 20px; }
+  .crypto-icon {
+    padding: 6px 14px;
+    border-radius: 8px;
+    font-family: 'DM Mono', monospace;
+    font-size: 0.72rem;
+    font-weight: 500;
+    background: rgba(255,209,102,0.08);
+    border: 1px solid rgba(255,209,102,0.2);
+    color: var(--gold);
+  }
+
+  .plans-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+    margin-top: 48px;
+  }
+
+  .plan-card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 20px;
+    padding: 32px 28px;
+    position: relative;
+    overflow: hidden;
+    transition: all 0.3s;
+  }
+
+  .plan-card.featured {
+    border-color: rgba(0,210,255,0.4);
+    background: linear-gradient(135deg, rgba(0,210,255,0.05), var(--card));
+  }
+
+  .plan-card.featured::before {
+    content: 'MOST POPULAR';
+    position: absolute;
+    top: 16px;
+    right: -20px;
+    background: linear-gradient(90deg, var(--neon), var(--neon2));
+    color: #050810;
+    font-family: 'DM Mono', monospace;
+    font-size: 0.62rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    padding: 4px 36px;
+    transform: rotate(35deg);
+  }
+
+  .plan-card:hover { transform: translateY(-4px); box-shadow: var(--glow); }
+
+  .plan-name { font-family: 'DM Mono', monospace; font-size: 0.75rem; letter-spacing: 0.1em; color: var(--muted); text-transform: uppercase; margin-bottom: 12px; }
+
+  .plan-price {
+    font-family: 'Syne', sans-serif;
+    font-weight: 800;
+    font-size: 2.4rem;
+    margin-bottom: 4px;
+  }
+
+  .plan-price span { font-size: 1rem; font-weight: 400; color: var(--muted); }
+
+  .plan-features { list-style: none; margin: 24px 0; }
+  .plan-features li {
+    padding: 8px 0;
+    border-bottom: 1px solid var(--border2);
+    font-size: 0.88rem;
+    color: var(--muted);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .plan-features li::before { content: '✓'; color: var(--green); font-weight: 700; flex-shrink: 0; }
+
+  /* ===== MODAL ===== */
+  .modal-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(5,8,16,0.85);
+    backdrop-filter: blur(12px);
+    z-index: 2000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s;
+  }
+
+  .modal-overlay.open { opacity: 1; pointer-events: all; }
+
+  .modal {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 24px;
+    padding: 40px;
+    width: 100%;
+    max-width: 480px;
+    transform: translateY(20px);
+    transition: transform 0.3s;
+    max-height: 90vh;
+    overflow-y: auto;
+  }
+
+  .modal-overlay.open .modal { transform: translateY(0); }
+
+  .modal-title {
+    font-family: 'Syne', sans-serif;
+    font-weight: 800;
+    font-size: 1.6rem;
+    margin-bottom: 8px;
+  }
+
+  .modal-sub { color: var(--muted); font-size: 0.9rem; margin-bottom: 32px; }
+
+  .form-group { margin-bottom: 20px; }
+
+  label {
+    display: block;
+    font-family: 'DM Mono', monospace;
+    font-size: 0.72rem;
+    color: var(--muted);
+    margin-bottom: 8px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+
+  input, textarea, select {
+    width: 100%;
+    background: var(--bg3);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 12px 16px;
+    color: var(--text);
+    font-family: 'Cabinet Grotesk', sans-serif;
+    font-size: 0.95rem;
+    outline: none;
+    transition: border-color 0.2s;
+  }
+
+  input:focus, textarea:focus, select:focus {
+    border-color: var(--neon);
+    box-shadow: 0 0 0 3px rgba(0,210,255,0.1);
+  }
+
+  select option { background: var(--card); }
+  textarea { resize: vertical; min-height: 100px; }
+
+  .modal-actions { display: flex; gap: 12px; margin-top: 28px; }
+  .modal-actions .btn { flex: 1; justify-content: center; }
+
+  .close-btn {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    background: var(--bg3);
+    border: 1px solid var(--border);
+    color: var(--muted);
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s;
+  }
+  .close-btn:hover { color: var(--text); border-color: var(--neon); }
+
+  /* ===== POST TIP FORM ===== */
+  .post-tip-section {
+    background: linear-gradient(135deg, rgba(0,210,255,0.04), rgba(123,47,255,0.04));
+    border: 1px solid var(--border);
+    border-radius: 24px;
+    padding: 48px;
+    margin-top: 48px;
+  }
+
+  /* ===== LEADERBOARD ===== */
+  .leaderboard-list { display: flex; flex-direction: column; gap: 10px; }
+
+  .lb-row {
+    display: grid;
+    grid-template-columns: 40px 1fr auto auto auto;
+    align-items: center;
+    gap: 16px;
+    padding: 16px 20px;
+    background: var(--card);
+    border: 1px solid var(--border2);
+    border-radius: 12px;
+    transition: all 0.2s;
+  }
+
+  .lb-row:hover { border-color: var(--border); }
+  .lb-row:first-child { border-color: rgba(255,209,102,0.3); background: rgba(255,209,102,0.04); }
+  .lb-row:nth-child(2) { border-color: rgba(192,192,192,0.3); background: rgba(192,192,192,0.04); }
+  .lb-row:nth-child(3) { border-color: rgba(205,127,50,0.3); background: rgba(205,127,50,0.04); }
+
+  .lb-rank {
+    font-family: 'Syne', sans-serif;
+    font-weight: 800;
+    font-size: 1.1rem;
+    text-align: center;
+  }
+
+  .lb-name { font-weight: 600; font-size: 0.95rem; }
+  .lb-tips { font-family: 'DM Mono', monospace; font-size: 0.72rem; color: var(--muted); }
+  .lb-rate { font-family: 'DM Mono', monospace; font-size: 0.85rem; color: var(--green); font-weight: 600; }
+  .lb-profit { font-family: 'Syne', sans-serif; font-weight: 700; color: var(--gold); }
+
+  /* ===== TOAST ===== */
+  .toast {
+    position: fixed;
+    bottom: 32px;
+    right: 32px;
+    background: var(--card2);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 16px 24px;
+    font-size: 0.88rem;
+    font-weight: 600;
+    z-index: 9999;
+    transform: translateY(80px);
+    opacity: 0;
+    transition: all 0.35s cubic-bezier(0.34, 1.56, 0.64, 1);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .toast.show { transform: translateY(0); opacity: 1; }
+  .toast.success { border-color: rgba(6,255,165,0.4); color: var(--green); }
+  .toast.error { border-color: rgba(255,77,109,0.4); color: var(--red); }
+
+  /* ===== FOOTER ===== */
+  footer {
+    position: relative;
+    z-index: 2;
+    background: var(--bg2);
+    border-top: 1px solid var(--border);
+    padding: 60px 0 32px;
+    margin-top: 80px;
+  }
+
+  .footer-grid {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr 1fr;
+    gap: 48px;
+    margin-bottom: 48px;
+  }
+
+  .footer-brand p { color: var(--muted); font-size: 0.88rem; line-height: 1.7; margin-top: 16px; margin-bottom: 24px; }
+
+  .footer-col h4 {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.72rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 16px;
+  }
+
+  .footer-col a {
+    display: block;
+    color: var(--text);
+    text-decoration: none;
+    font-size: 0.88rem;
+    padding: 4px 0;
+    transition: color 0.2s;
+    cursor: pointer;
+  }
+  .footer-col a:hover { color: var(--neon); }
+
+  .footer-bottom {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: 24px;
+    border-top: 1px solid var(--border2);
+    flex-wrap: wrap;
+    gap: 16px;
+  }
+
+  .footer-bottom p { color: var(--muted); font-size: 0.8rem; }
+
+  .disclaimer {
+    background: rgba(255,77,109,0.06);
+    border: 1px solid rgba(255,77,109,0.2);
+    border-radius: 12px;
+    padding: 16px 20px;
+    font-size: 0.8rem;
+    color: var(--muted);
+    line-height: 1.6;
+    margin-top: 32px;
+    font-family: 'DM Mono', monospace;
+  }
+
+  /* ===== MOBILE PAYMENT MODAL ===== */
+  .payment-method-tabs {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 24px;
+  }
+
+  .pm-tab {
+    flex: 1;
+    padding: 12px;
+    border-radius: 10px;
+    border: 1px solid var(--border);
+    background: none;
+    color: var(--muted);
+    cursor: pointer;
+    font-family: 'Cabinet Grotesk', sans-serif;
+    font-weight: 600;
+    transition: all 0.2s;
+  }
+
+  .pm-tab.active.mpesa { border-color: rgba(6,255,165,0.4); background: rgba(6,255,165,0.08); color: var(--green); }
+  .pm-tab.active.crypto { border-color: rgba(255,209,102,0.4); background: rgba(255,209,102,0.08); color: var(--gold); }
+
+  .pm-panel { display: none; }
+  .pm-panel.active { display: block; }
+
+  .mpesa-steps { display: flex; flex-direction: column; gap: 12px; }
+
+  .mpesa-step {
+    display: flex;
+    align-items: flex-start;
+    gap: 14px;
+    padding: 14px 16px;
+    background: var(--bg3);
+    border-radius: 10px;
+    border: 1px solid var(--border2);
+  }
+
+  .step-num {
+    width: 26px;
+    height: 26px;
+    border-radius: 50%;
+    background: rgba(6,255,165,0.15);
+    border: 1px solid rgba(6,255,165,0.3);
+    color: var(--green);
+    font-family: 'DM Mono', monospace;
+    font-size: 0.75rem;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    margin-top: 2px;
+  }
+
+  .step-text { font-size: 0.88rem; color: var(--text); line-height: 1.5; }
+  .step-text strong { color: var(--green); }
+
+  .wallet-address {
+    background: var(--bg3);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 14px 16px;
+    font-family: 'DM Mono', monospace;
+    font-size: 0.75rem;
+    color: var(--gold);
+    word-break: break-all;
+    cursor: pointer;
+    transition: border-color 0.2s;
+    margin-top: 12px;
+  }
+
+  .wallet-address:hover { border-color: var(--gold); }
+
+  /* ===== RESPONSIVE ===== */
+  @media (max-width: 900px) {
+    nav { padding: 14px 20px; }
+    .nav-links { display: none; }
+    .hero { padding-top: 100px; }
+    .payment-grid { grid-template-columns: 1fr; }
+    .plans-grid { grid-template-columns: 1fr; }
+    .footer-grid { grid-template-columns: 1fr 1fr; }
+    .event-row { grid-template-columns: 1fr auto; }
+    .tips-grid { grid-template-columns: 1fr; }
+    .post-tip-section { padding: 28px; }
+  }
+
+  @media (max-width: 600px) {
+    .footer-grid { grid-template-columns: 1fr; }
+    .lb-row { grid-template-columns: 30px 1fr auto auto; }
+    .modal { padding: 28px 20px; }
+  }
+
+  /* ===== UTILITY ===== */
+  .hidden { display: none !important; }
+  .text-green { color: var(--green); }
+  .text-red { color: var(--red); }
+  .text-gold { color: var(--gold); }
+  .text-neon { color: var(--neon); }
+  .text-muted { color: var(--muted); }
+  .flex { display: flex; }
+  .flex-col { flex-direction: column; }
+  .items-center { align-items: center; }
+  .gap-2 { gap: 8px; }
+  .gap-3 { gap: 12px; }
+  .mb-2 { margin-bottom: 8px; }
+  .mt-2 { margin-top: 8px; }
+  .w-full { width: 100%; }
+  .text-center { text-align: center; }
+
+  /* ===== ANIMATIONS ===== */
+  @keyframes fadeIn { from { opacity:0; transform:translateY(16px); } to { opacity:1; transform:translateY(0); } }
+  .fade-in { animation: fadeIn 0.5s ease forwards; }
+  .fade-in-delay-1 { animation-delay: 0.1s; opacity: 0; }
+  .fade-in-delay-2 { animation-delay: 0.2s; opacity: 0; }
+  .fade-in-delay-3 { animation-delay: 0.3s; opacity: 0; }
+
+  /* Scrollbar */
+  ::-webkit-scrollbar { width: 6px; }
+  ::-webkit-scrollbar-track { background: var(--bg); }
+  ::-webkit-scrollbar-thumb { background: var(--border); border-radius: 3px; }
+  ::-webkit-scrollbar-thumb:hover { background: rgba(0,210,255,0.3); }
+</style>
+</head>
+<body>
+
+<!-- Background elements -->
+<div class="orb orb1"></div>
+<div class="orb orb2"></div>
+<div class="orb orb3"></div>
+
+<!-- ===== NAV ===== -->
+<nav>
+  <div class="logo" onclick="scrollToTop()">Bet<span>Edge</span> Pro</div>
+  <div class="nav-links">
+    <button class="nav-link" onclick="scrollTo('tips')">Tips</button>
+    <button class="nav-link" onclick="scrollTo('events')">Events</button>
+    <button class="nav-link" onclick="scrollTo('leaderboard')">Leaderboard</button>
+    <button class="nav-link" onclick="scrollTo('pricing')">Pricing</button>
+    <button class="nav-link" onclick="scrollTo('post-tip')">Post Tip</button>
+  </div>
+  <div class="flex gap-2" id="nav-auth">
+    <button class="btn btn-ghost" onclick="openModal('login')">Sign In</button>
+    <button class="btn btn-primary" onclick="openModal('register')">Join Free</button>
+  </div>
+  <div class="hidden" id="nav-user">
+    <div class="flex items-center gap-2">
+      <div class="avatar" id="nav-avatar" style="background: linear-gradient(135deg,#00d2ff,#7b2fff); color:#fff;"></div>
+      <button class="btn btn-ghost" onclick="logout()">Sign Out</button>
+    </div>
+  </div>
+</nav>
+
+<!-- ===== TICKER ===== -->
+<div class="ticker-wrap" style="margin-top:64px; position:relative; z-index:2;">
+  <div class="ticker-inner" id="ticker">
+    <div class="ticker-item">⚽ Man City vs Arsenal — TIP: Both Teams to Score @ 1.85</div>
+    <div class="ticker-item">🏀 Lakers vs Celtics — TIP: Lakers -4.5 @ 1.91</div>
+    <div class="ticker-item">🎾 Djokovic vs Alcaraz — TIP: Over 3.5 Sets @ 2.10</div>
+    <div class="ticker-item">🏉 Springboks vs All Blacks — TIP: Springboks Win @ 2.40</div>
+    <div class="ticker-item">⚽ Liverpool vs PSG — TIP: Liverpool Win & Over 2.5 @ 2.75</div>
+    <div class="ticker-item">🏏 India vs Australia — TIP: India Win @ 1.75</div>
+    <div class="ticker-item">⚽ Man City vs Arsenal — TIP: Both Teams to Score @ 1.85</div>
+    <div class="ticker-item">🏀 Lakers vs Celtics — TIP: Lakers -4.5 @ 1.91</div>
+    <div class="ticker-item">🎾 Djokovic vs Alcaraz — TIP: Over 3.5 Sets @ 2.10</div>
+    <div class="ticker-item">🏉 Springboks vs All Blacks — TIP: Springboks Win @ 2.40</div>
+    <div class="ticker-item">⚽ Liverpool vs PSG — TIP: Liverpool Win & Over 2.5 @ 2.75</div>
+    <div class="ticker-item">🏏 India vs Australia — TIP: India Win @ 1.75</div>
+  </div>
+</div>
+
+<main>
+  <!-- ===== HERO ===== -->
+  <section style="padding:0;">
+    <div class="hero container">
+      <div class="hero-inner">
+        <div class="badge fade-in">
+          <span class="dot"></span>
+          LIVE TIPS UPDATED DAILY
+        </div>
+        <h1 class="fade-in fade-in-delay-1">
+          Win More.<br>
+          <span class="line2">Bet Smarter.</span>
+        </h1>
+        <p class="fade-in fade-in-delay-2">Expert betting tips from verified analysts and top community tipsters. Access premium picks, live odds, and win-rate tracked predictions across football, basketball, tennis & more.</p>
+        <div class="hero-actions fade-in fade-in-delay-3">
+          <button class="btn btn-primary" onclick="openModal('register')">🚀 Start for Free</button>
+          <button class="btn btn-ghost" onclick="scrollTo('tips')">View Today's Tips</button>
+        </div>
+        <div class="stats-row fade-in fade-in-delay-3">
+          <div class="stat-item">
+            <div class="stat-num" id="stat-tips">2,<span>847</span></div>
+            <div class="stat-label">TIPS POSTED</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-num">68<span>%</span></div>
+            <div class="stat-label">WIN RATE</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-num" id="stat-members">12,<span>304</span></div>
+            <div class="stat-label">MEMBERS</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-num">4.9<span>★</span></div>
+            <div class="stat-label">RATING</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== TIPS SECTION ===== -->
+  <section id="tips">
+    <div class="container">
+      <div class="section-tag">// TODAY'S PICKS</div>
+      <h2 class="section-title">Expert Betting Tips</h2>
+      <p class="section-sub">Hand-picked tips from our verified community of analysts. Track records visible, confidence levels shown.</p>
+
+      <div style="display:flex; gap:12px; margin-bottom:28px; flex-wrap:wrap;">
+        <button class="btn btn-ghost" style="padding:8px 18px; font-size:0.82rem;" onclick="filterTips('all')" id="filter-all">All Sports</button>
+        <button class="btn btn-ghost" style="padding:8px 18px; font-size:0.82rem;" onclick="filterTips('football')" id="filter-football">⚽ Football</button>
+        <button class="btn btn-ghost" style="padding:8px 18px; font-size:0.82rem;" onclick="filterTips('basketball')" id="filter-basketball">🏀 Basketball</button>
+        <button class="btn btn-ghost" style="padding:8px 18px; font-size:0.82rem;" onclick="filterTips('tennis')" id="filter-tennis">🎾 Tennis</button>
+        <button class="btn btn-ghost" style="padding:8px 18px; font-size:0.82rem;" onclick="filterTips('rugby')" id="filter-rugby">🏉 Rugby</button>
+        <button class="btn btn-ghost" style="padding:8px 18px; font-size:0.82rem;" onclick="filterTips('cricket')" id="filter-cricket">🏏 Cricket</button>
+      </div>
+
+      <div class="tips-grid" id="tips-grid">
+        <!-- Tips rendered by JS -->
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== POST TIP ===== -->
+  <section id="post-tip" style="padding-top:0;">
+    <div class="container">
+      <div class="post-tip-section">
+        <div class="section-tag">// COMMUNITY</div>
+        <h2 class="section-title">Share Your Tip</h2>
+        <p class="section-sub" style="margin-bottom:32px;">Registered members can post tips. Build your reputation and track record in our community.</p>
+
+        <div id="post-tip-gate">
+          <div style="text-align:center; padding:40px;">
+            <div style="font-size:2.5rem; margin-bottom:16px;">🔒</div>
+            <h3 style="font-family:'Syne',sans-serif; font-weight:700; margin-bottom:10px;">Members Only</h3>
+            <p style="color:var(--muted); margin-bottom:24px;">Create a free account to post your tips and build your betting reputation.</p>
+            <button class="btn btn-primary" onclick="openModal('register')">Create Free Account</button>
+          </div>
+        </div>
+
+        <div id="post-tip-form" class="hidden">
+          <div style="display:grid; grid-template-columns:1fr 1fr; gap:20px;">
+            <div class="form-group">
+              <label>Match / Event</label>
+              <input type="text" id="tip-match" placeholder="e.g. Man City vs Arsenal">
+            </div>
+            <div class="form-group">
+              <label>Sport</label>
+              <select id="tip-sport">
+                <option value="football">⚽ Football</option>
+                <option value="basketball">🏀 Basketball</option>
+                <option value="tennis">🎾 Tennis</option>
+                <option value="rugby">🏉 Rugby</option>
+                <option value="cricket">🏏 Cricket</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label>Your Pick / Prediction</label>
+              <input type="text" id="tip-pick" placeholder="e.g. Both Teams to Score">
+            </div>
+            <div class="form-group">
+              <label>Odds</label>
+              <input type="number" id="tip-odds" placeholder="e.g. 1.85" step="0.01" min="1">
+            </div>
+            <div class="form-group">
+              <label>Confidence (1–5)</label>
+              <select id="tip-confidence">
+                <option value="1">⭐ 1 — Low</option>
+                <option value="2">⭐⭐ 2 — Below Average</option>
+                <option value="3" selected>⭐⭐⭐ 3 — Medium</option>
+                <option value="4">⭐⭐⭐⭐ 4 — High</option>
+                <option value="5">⭐⭐⭐⭐⭐ 5 — Very High</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label>Match Date & Time</label>
+              <input type="datetime-local" id="tip-date">
+            </div>
+          </div>
+          <div class="form-group" style="margin-top:4px;">
+            <label>Analysis / Reasoning</label>
+            <textarea id="tip-analysis" placeholder="Explain why you think this tip will win. Include form, stats, injuries..."></textarea>
+          </div>
+          <button class="btn btn-primary" style="margin-top:8px;" onclick="submitTip()">🎯 Post Tip</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== EVENTS SECTION ===== -->
+  <section id="events">
+    <div class="container">
+      <div class="section-tag">// SCHEDULE</div>
+      <h2 class="section-title">Events</h2>
+      <p class="section-sub">Track upcoming fixtures and past results with outcomes.</p>
+
+      <div class="events-tabs">
+        <button class="tab-btn active" onclick="switchEventTab('upcoming', this)">Upcoming</button>
+        <button class="tab-btn" onclick="switchEventTab('previous', this)">Previous Results</button>
+      </div>
+
+      <div class="events-list" id="upcoming-events">
+        <!-- Rendered by JS -->
+      </div>
+
+      <div class="events-list hidden" id="previous-events">
+        <!-- Rendered by JS -->
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== LEADERBOARD ===== -->
+  <section id="leaderboard">
+    <div class="container">
+      <div style="display:grid; grid-template-columns:1fr 1fr; gap:48px; align-items:start;">
+        <div>
+          <div class="section-tag">// TOP TIPSTERS</div>
+          <h2 class="section-title">Leaderboard</h2>
+          <p class="section-sub">Ranked by win rate and profit. Follow the best to copy their picks.</p>
+          <div class="leaderboard-list" id="leaderboard-list">
+            <!-- Rendered by JS -->
+          </div>
+        </div>
+        <div>
+          <div class="section-tag">// YOUR STATS</div>
+          <h2 class="section-title">My Profile</h2>
+          <div id="profile-locked" class="card" style="text-align:center; padding:40px;">
+            <div style="font-size:2rem; margin-bottom:16px;">📊</div>
+            <h3 style="font-family:'Syne',sans-serif; font-weight:700; margin-bottom:10px;">View Your Stats</h3>
+            <p style="color:var(--muted); margin-bottom:24px; font-size:0.88rem;">Sign in to see your win rate, tips history, and ranking.</p>
+            <button class="btn btn-primary" onclick="openModal('login')">Sign In</button>
+          </div>
+          <div id="profile-stats" class="hidden">
+            <div class="card" style="background:linear-gradient(135deg, rgba(0,210,255,0.05), var(--card)); margin-bottom:16px;">
+              <div style="display:flex; align-items:center; gap:16px; margin-bottom:24px;">
+                <div class="avatar" id="profile-avatar" style="width:52px;height:52px;font-size:1.2rem;background:linear-gradient(135deg,#00d2ff,#7b2fff); color:#fff;"></div>
+                <div>
+                  <div style="font-family:'Syne',sans-serif; font-weight:700; font-size:1.1rem;" id="profile-name"></div>
+                  <div style="font-family:'DM Mono',monospace; font-size:0.7rem; color:var(--muted);" id="profile-email"></div>
+                </div>
+              </div>
+              <div style="display:grid; grid-template-columns:1fr 1fr 1fr; gap:16px; text-align:center;">
+                <div style="background:var(--bg3); border-radius:10px; padding:16px;">
+                  <div style="font-family:'Syne',sans-serif; font-weight:800; font-size:1.5rem; color:var(--neon);" id="stat-my-tips">0</div>
+                  <div style="font-size:0.72rem; color:var(--muted); margin-top:2px;">TIPS POSTED</div>
+                </div>
+                <div style="background:var(--bg3); border-radius:10px; padding:16px;">
+                  <div style="font-family:'Syne',sans-serif; font-weight:800; font-size:1.5rem; color:var(--green);" id="stat-my-wins">0</div>
+                  <div style="font-size:0.72rem; color:var(--muted); margin-top:2px;">WINS</div>
+                </div>
+                <div style="background:var(--bg3); border-radius:10px; padding:16px;">
+                  <div style="font-family:'Syne',sans-serif; font-weight:800; font-size:1.5rem; color:var(--gold);" id="stat-my-rate">—</div>
+                  <div style="font-size:0.72rem; color:var(--muted); margin-top:2px;">WIN RATE</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== PRICING / PAYMENT ===== -->
+  <section id="pricing">
+    <div class="container">
+      <div class="section-tag">// PREMIUM ACCESS</div>
+      <h2 class="section-title">Choose Your Plan</h2>
+      <p class="section-sub">Unlock premium picks, AI analysis, and VIP tipster content. Pay via M-Pesa or Crypto.</p>
+
+      <div class="payment-grid">
+        <div class="payment-card mpesa" onclick="openPaymentModal('mpesa')">
+          <div class="payment-icon">📱</div>
+          <div class="payment-title">M-Pesa</div>
+          <div class="payment-desc">Fast, secure mobile payments. Available across East Africa. Instant activation after payment confirmation.</div>
+          <div style="font-family:'DM Mono',monospace; font-size:0.75rem; color:var(--green); margin-bottom:20px;">
+            ✓ Safaricom • ✓ Airtel • ✓ Kenya • ✓ Tanzania • ✓ Uganda
+          </div>
+          <button class="btn w-full" style="background:rgba(6,255,165,0.15); color:var(--green); border:1px solid rgba(6,255,165,0.4); justify-content:center;">Pay with M-Pesa →</button>
+        </div>
+
+        <div class="payment-card crypto" onclick="openPaymentModal('crypto')">
+          <div class="payment-icon">₿</div>
+          <div class="payment-title">Crypto</div>
+          <div class="payment-desc">Anonymous, borderless payments. Accept Bitcoin, USDT, ETH and more. Worldwide access instantly.</div>
+          <div class="crypto-icons">
+            <span class="crypto-icon">BTC</span>
+            <span class="crypto-icon">USDT</span>
+            <span class="crypto-icon">ETH</span>
+            <span class="crypto-icon">BNB</span>
+          </div>
+          <button class="btn w-full" style="background:rgba(255,209,102,0.15); color:var(--gold); border:1px solid rgba(255,209,102,0.4); justify-content:center;">Pay with Crypto →</button>
+        </div>
+      </div>
+
+      <div class="plans-grid">
+        <div class="plan-card" onclick="openPaymentModal('mpesa', 'basic')">
+          <div class="plan-name">Starter</div>
+          <div class="plan-price">KES 499 <span>/ month</span></div>
+          <ul class="plan-features">
+            <li>10 Premium Tips/month</li>
+            <li>Community access</li>
+            <li>Win-rate tracking</li>
+            <li>Email alerts</li>
+          </ul>
+          <button class="btn btn-ghost w-full" style="justify-content:center;">Get Started</button>
+        </div>
+
+        <div class="plan-card featured">
+          <div class="plan-name">Pro</div>
+          <div class="plan-price">KES 1,499 <span>/ month</span></div>
+          <ul class="plan-features">
+            <li>Unlimited Premium Tips</li>
+            <li>AI-powered analysis</li>
+            <li>VIP tipster access</li>
+            <li>Live odds alerts</li>
+            <li>Priority support</li>
+          </ul>
+          <button class="btn btn-primary w-full" style="justify-content:center;" onclick="openPaymentModal('mpesa', 'pro'); event.stopPropagation()">Get Pro</button>
+        </div>
+
+        <div class="plan-card" onclick="openPaymentModal('crypto', 'elite')">
+          <div class="plan-name">Elite</div>
+          <div class="plan-price">$49 <span>/ month</span></div>
+          <ul class="plan-features">
+            <li>Everything in Pro</li>
+            <li>1-on-1 tipster consultation</li>
+            <li>Bankroll management</li>
+            <li>Crypto-only exclusive picks</li>
+            <li>Early access to tips</li>
+          </ul>
+          <button class="btn btn-gold w-full" style="justify-content:center;">Go Elite</button>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<!-- ===== FOOTER ===== -->
+<footer>
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <div class="logo">Bet<span>Edge</span> Pro</div>
+        <p>The smartest betting tips community in Africa and beyond. Powered by data, driven by community.</p>
+        <div class="flex gap-2">
+          <button class="btn btn-ghost" style="padding:8px 16px; font-size:0.8rem;">Twitter</button>
+          <button class="btn btn-ghost" style="padding:8px 16px; font-size:0.8rem;">Telegram</button>
+          <button class="btn btn-ghost" style="padding:8px 16px; font-size:0.8rem;">WhatsApp</button>
+        </div>
+      </div>
+      <div class="footer-col">
+        <h4>Platform</h4>
+        <a onclick="scrollTo('tips')">Today's Tips</a>
+        <a onclick="scrollTo('events')">Events</a>
+        <a onclick="scrollTo('leaderboard')">Leaderboard</a>
+        <a onclick="scrollTo('post-tip')">Post a Tip</a>
+      </div>
+      <div class="footer-col">
+        <h4>Payments</h4>
+        <a onclick="openPaymentModal('mpesa')">M-Pesa</a>
+        <a onclick="openPaymentModal('crypto')">Bitcoin (BTC)</a>
+        <a onclick="openPaymentModal('crypto')">USDT</a>
+        <a onclick="openPaymentModal('crypto')">Ethereum</a>
+      </div>
+      <div class="footer-col">
+        <h4>Support</h4>
+        <a>Help Centre</a>
+        <a>Terms of Service</a>
+        <a>Privacy Policy</a>
+        <a>Responsible Gambling</a>
+      </div>
+    </div>
+    <div class="disclaimer">
+      ⚠️ GAMBLING DISCLAIMER: Sports betting involves financial risk. Tips on BetEdge Pro are for informational and entertainment purposes only. We do not guarantee winnings. Bet responsibly and only what you can afford to lose. If you have a gambling problem, call the National Responsible Gambling Helpline. Must be 18+ to use this service.
+    </div>
+    <div class="footer-bottom">
+      <p>© 2026 BetEdge Pro. All rights reserved. Built for East Africa & beyond.</p>
+      <p style="font-family:'DM Mono',monospace; font-size:0.72rem; color:var(--muted);">v2.6.0 — Powered by Community</p>
+    </div>
+  </div>
+</footer>
+
+<!-- ===== MODALS ===== -->
+
+<!-- Login Modal -->
+<div class="modal-overlay" id="modal-login">
+  <div class="modal" style="position:relative;">
+    <button class="close-btn" onclick="closeModal('login')">✕</button>
+    <div class="modal-title">Welcome Back</div>
+    <div class="modal-sub">Sign in to access your tips and stats.</div>
+    <div class="form-group">
+      <label>Email Address</label>
+      <input type="email" id="login-email" placeholder="you@example.com">
+    </div>
+    <div class="form-group">
+      <label>Password</label>
+      <input type="password" id="login-password" placeholder="••••••••">
+    </div>
+    <div class="modal-actions">
+      <button class="btn btn-primary" onclick="doLogin()">Sign In</button>
+      <button class="btn btn-ghost" onclick="switchModal('login','register')">Create Account</button>
+    </div>
+  </div>
+</div>
+
+<!-- Register Modal -->
+<div class="modal-overlay" id="modal-register">
+  <div class="modal" style="position:relative;">
+    <button class="close-btn" onclick="closeModal('register')">✕</button>
+    <div class="modal-title">Join BetEdge Pro</div>
+    <div class="modal-sub">Free account — post tips, track your wins, follow top tipsters.</div>
+    <div class="form-group">
+      <label>Full Name</label>
+      <input type="text" id="reg-name" placeholder="John Kamau">
+    </div>
+    <div class="form-group">
+      <label>Username</label>
+      <input type="text" id="reg-username" placeholder="tipking_ke">
+    </div>
+    <div class="form-group">
+      <label>Email Address</label>
+      <input type="email" id="reg-email" placeholder="you@example.com">
+    </div>
+    <div class="form-group">
+      <label>Password</label>
+      <input type="password" id="reg-password" placeholder="Min. 8 characters">
+    </div>
+    <div class="modal-actions">
+      <button class="btn btn-primary" onclick="doRegister()">Create Account</button>
+      <button class="btn btn-ghost" onclick="switchModal('register','login')">Sign In Instead</button>
+    </div>
+  </div>
+</div>
+
+<!-- Payment Modal -->
+<div class="modal-overlay" id="modal-payment">
+  <div class="modal" style="position:relative; max-width:520px;">
+    <button class="close-btn" onclick="closeModal('payment')">✕</button>
+    <div class="modal-title" id="payment-modal-title">Make Payment</div>
+    <div class="modal-sub" id="payment-modal-sub">Choose your preferred payment method.</div>
+
+    <div class="payment-method-tabs">
+      <button class="pm-tab mpesa active" id="pm-tab-mpesa" onclick="switchPayTab('mpesa')">📱 M-Pesa</button>
+      <button class="pm-tab crypto" id="pm-tab-crypto" onclick="switchPayTab('crypto')">₿ Crypto</button>
+    </div>
+
+    <div class="pm-panel active" id="pm-mpesa">
+      <div class="form-group">
+        <label>Your M-Pesa Phone Number</label>
+        <input type="tel" id="mpesa-phone" placeholder="e.g. 0712 345 678">
+      </div>
+      <div class="form-group">
+        <label>Select Plan</label>
+        <select id="mpesa-plan">
+          <option value="499">Starter — KES 499/month</option>
+          <option value="1499">Pro — KES 1,499/month</option>
+        </select>
+      </div>
+      <div class="mpesa-steps" style="margin-bottom:20px;">
+        <div class="mpesa-step">
+          <div class="step-num">1</div>
+          <div class="step-text">Click "Send STK Push" — you'll get a prompt on your phone.</div>
+        </div>
+        <div class="mpesa-step">
+          <div class="step-num">2</div>
+          <div class="step-text">Enter your <strong>M-Pesa PIN</strong> to confirm payment.</div>
+        </div>
+        <div class="mpesa-step">
+          <div class="step-num">3</div>
+          <div class="step-text">Your account is activated within <strong>2 minutes</strong> of payment.</div>
+        </div>
+      </div>
+      <button class="btn btn-primary w-full" style="justify-content:center;" onclick="processMpesa()">📱 Send STK Push</button>
+      <p style="text-align:center; margin-top:12px; font-size:0.78rem; color:var(--muted);">Powered by Safaricom M-Pesa Daraja API</p>
+    </div>
+
+    <div class="pm-panel" id="pm-crypto">
+      <div class="form-group">
+        <label>Select Cryptocurrency</label>
+        <select id="crypto-currency" onchange="updateWallet()">
+          <option value="btc">Bitcoin (BTC) — $49/mo</option>
+          <option value="usdt">USDT TRC-20 — $49/mo</option>
+          <option value="eth">Ethereum (ETH) — $49/mo</option>
+          <option value="bnb">BNB BSC — $49/mo</option>
+        </select>
+      </div>
+      <label>Send exact amount to wallet address:</label>
+      <div class="wallet-address" id="wallet-addr" onclick="copyWallet()" title="Click to copy">
+        1A1zP1eP5QGefi2DMPTfTL5SLmv7Divf1N
+      </div>
+      <p style="font-size:0.75rem; color:var(--muted); margin-top:8px; margin-bottom:16px; font-family:'DM Mono',monospace;">⚠️ Send ONLY the selected currency to this address.</p>
+      <div class="form-group">
+        <label>Your Transaction Hash / TXID</label>
+        <input type="text" id="crypto-txid" placeholder="Paste transaction hash after sending">
+      </div>
+      <button class="btn btn-gold w-full" style="justify-content:center;" onclick="processCrypto()">✓ Confirm Payment</button>
+    </div>
+  </div>
+</div>
+
+<!-- Toast -->
+<div class="toast" id="toast"></div>
+
+<script>
+// ===== STORAGE (localStorage — portable & works in any env) =====
+const DB = {
+  get: k => { try { return JSON.parse(localStorage.getItem('be_'+k)); } catch(e) { return null; } },
+  set: (k,v) => localStorage.setItem('be_'+k, JSON.stringify(v)),
+};
+
+// ===== APP STATE =====
+let currentUser = DB.get('user') || null;
+let tips = DB.get('tips') || getDefaultTips();
+let events = DB.get('events') || getDefaultEvents();
+let leaderboard = DB.get('leaderboard') || getDefaultLeaderboard();
+let filterActive = 'all';
+
+// ===== DEFAULT DATA =====
+function getDefaultTips() {
+  return [
+    { id:1, match:'Manchester City vs Arsenal', sport:'football', pick:'Both Teams to Score', odds:1.85, confidence:4, analysis:'Both sides have scored in 8 of last 10 meetings. Arsenal\'s attack is in excellent form. City concede more at home under pressure from top sides.', poster:'TipKing_KE', posterColor:'#00d2ff', time:'2h ago', status:'pending', date:'2026-03-23T19:45' },
+    { id:2, match:'LA Lakers vs Boston Celtics', sport:'basketball', pick:'Lakers -4.5', odds:1.91, confidence:3, analysis:'Lakers are 8-2 ATS at home in last 10. Celtics missing two key starters. LeBron is in 30+ PPG form. Home advantage significant.', poster:'HoopsMaster', posterColor:'#ff9f1c', time:'4h ago', status:'pending', date:'2026-03-23T21:30' },
+    { id:3, match:'Djokovic vs Alcaraz SF', sport:'tennis', pick:'Over 3.5 Sets', odds:2.10, confidence:5, analysis:'These two have played 6 sets or more in their last 3 Grand Slam meetings. Both in peak form. Expect a physical battle going the full distance.', poster:'AceTipster', posterColor:'#7b2fff', time:'6h ago', status:'pending', date:'2026-03-24T14:00' },
+    { id:4, match:'Springboks vs All Blacks', sport:'rugby', pick:'Springboks Win & Over 49.5 Pts', odds:2.40, confidence:3, analysis:'South Africa dominated the last series 3-0. NZ in rebuilding phase with new coach. Springboks pack superiority should deliver a comprehensive win.', poster:'RugbyPro_SA', posterColor:'#06ffa5', time:'1d ago', status:'win', date:'2026-03-22T16:00' },
+    { id:5, match:'India vs Australia T20', sport:'cricket', pick:'India Win', odds:1.75, confidence:4, analysis:'India 5-1 in last 6 T20s. Home conditions suit India\'s spinners. Kohli back in devastating form averaging 58 in last 10 T20Is.', poster:'CricketGuru_IN', posterColor:'#ffd166', time:'5h ago', status:'pending', date:'2026-03-24T09:30' },
+    { id:6, match:'Liverpool vs PSG UCL', sport:'football', pick:'Liverpool Win & Over 2.5', odds:2.75, confidence:4, analysis:'Anfield fortress — Liverpool unbeaten at home in UCL for 14 games. PSG defensive issues in away fixtures. Mo Salah on fire with 6 UCL goals.', poster:'TipKing_KE', posterColor:'#00d2ff', time:'3h ago', status:'pending', date:'2026-03-25T20:00' },
+  ];
+}
+
+function getDefaultEvents() {
+  return {
+    upcoming: [
+      { id:1, match:'Man City vs Arsenal', league:'Premier League', date:'23 Mar 2026', time:'19:45', sport:'football', tips:12 },
+      { id:2, match:'Lakers vs Celtics', league:'NBA', date:'23 Mar 2026', time:'21:30', sport:'basketball', tips:8 },
+      { id:3, match:'Djokovic vs Alcaraz', league:'Monte Carlo Masters', date:'24 Mar 2026', time:'14:00', sport:'tennis', tips:15 },
+      { id:4, match:'India vs Australia', league:'T20 Series G3', date:'24 Mar 2026', time:'09:30', sport:'cricket', tips:6 },
+      { id:5, match:'Liverpool vs PSG', league:'UCL QF 1st Leg', date:'25 Mar 2026', time:'20:00', sport:'football', tips:21 },
+      { id:6, match:'Springboks vs France', league:'Rugby Autumn Test', date:'28 Mar 2026', time:'17:00', sport:'rugby', tips:9 },
+    ],
+    previous: [
+      { id:7, match:'Chelsea vs Real Madrid', league:'UCL R16', date:'18 Mar 2026', time:'20:00', sport:'football', result:'1 — 3', tip:'Real Madrid Win', outcome:'win', odds:2.10 },
+      { id:8, match:'Golden State vs Miami', league:'NBA', date:'17 Mar 2026', time:'20:00', sport:'basketball', result:'112 — 104', tip:'Golden State Win', outcome:'win', odds:1.75 },
+      { id:9, match:'Sinner vs Medvedev', league:'Indian Wells SF', date:'16 Mar 2026', time:'19:00', sport:'tennis', result:'7-6 6-3', tip:'Over 3.5 Sets', outcome:'loss', odds:2.00 },
+      { id:10, match:'England vs New Zealand', league:'Cricket ODI', date:'15 Mar 2026', time:'10:30', sport:'cricket', result:'ENG won by 34 runs', tip:'England Win', outcome:'win', odds:1.65 },
+      { id:11, match:'Barcelona vs Atletico', league:'La Liga', date:'14 Mar 2026', time:'21:00', sport:'football', result:'2 — 2', tip:'BTTS', outcome:'win', odds:1.72 },
+    ]
+  };
+}
+
+function getDefaultLeaderboard() {
+  return [
+    { name:'TipKing_KE', tips:142, wins:98, rate:'69%', profit:'+KES 47,200', avatar:'TK', color:'#00d2ff' },
+    { name:'HoopsMaster', tips:87, wins:59, rate:'68%', profit:'+$890', avatar:'HM', color:'#ff9f1c' },
+    { name:'AceTipster', tips:203, wins:135, rate:'67%', profit:'+KES 31,400', avatar:'AT', color:'#7b2fff' },
+    { name:'RugbyPro_SA', tips:64, wins:41, rate:'64%', profit:'+$320', avatar:'RS', color:'#06ffa5' },
+    { name:'CricketGuru_IN', tips:118, wins:74, rate:'63%', profit:'+$580', avatar:'CG', color:'#ffd166' },
+  ];
+}
+
+// ===== RENDER TIPS =====
+function renderTips(filter) {
+  const grid = document.getElementById('tips-grid');
+  const filtered = filter === 'all' ? tips : tips.filter(t => t.sport === filter);
+  if (!filtered.length) {
+    grid.innerHTML = `<div style="grid-column:1/-1; text-align:center; padding:60px; color:var(--muted);">No tips for this sport yet. Be the first to post!</div>`;
+    return;
+  }
+  grid.innerHTML = filtered.map(t => `
+    <div class="card tip-card fade-in">
+      <div class="tip-header">
+        <span class="sport-badge badge-${t.sport}">${sportEmoji(t.sport)} ${capitalize(t.sport)}</span>
+        <span class="odds-chip">${t.odds}</span>
+      </div>
+      <div class="tip-match">${t.match}</div>
+      <div class="tip-pick">→ ${t.pick}</div>
+      <div class="tip-analysis">${t.analysis}</div>
+      <div class="tip-footer">
+        <div class="poster-info">
+          <div class="avatar" style="background:${t.posterColor}20; color:${t.posterColor}; border:1px solid ${t.posterColor}40;">${t.poster.slice(0,2).toUpperCase()}</div>
+          <div>
+            <div class="poster-name">${t.poster}</div>
+            <div class="tip-time">${t.time}</div>
+          </div>
+        </div>
+        <div>
+          <div class="confidence">
+            <div class="conf-dots">${[1,2,3,4,5].map(i=>`<div class="conf-dot ${i<=t.confidence?'active':'inactive'}"></div>`).join('')}</div>
+            <span>${t.status==='win'?'<span class="status-win">✓ WIN</span>':t.status==='loss'?'<span class="status-loss">✗ LOSS</span>':'<span class="status-pending">● LIVE</span>'}</span>
+          </div>
+          ${t.date ? `<div class="tip-time" style="text-align:right; margin-top:4px;">${formatDate(t.date)}</div>` : ''}
+        </div>
+      </div>
+    </div>
+  `).join('');
+}
+
+function sportEmoji(s) { return {football:'⚽',basketball:'🏀',tennis:'🎾',rugby:'🏉',cricket:'🏏'}[s]||'🎯'; }
+function capitalize(s) { return s.charAt(0).toUpperCase()+s.slice(1); }
+function formatDate(d) { try { return new Date(d).toLocaleString('en-KE',{month:'short',day:'numeric',hour:'2-digit',minute:'2-digit'}); } catch(e) { return d; } }
+
+function filterTips(sport) {
+  filterActive = sport;
+  document.querySelectorAll('[id^=filter-]').forEach(b => { b.style.borderColor=''; b.style.color=''; });
+  const btn = document.getElementById('filter-'+sport);
+  if (btn) { btn.style.borderColor='var(--neon)'; btn.style.color='var(--neon)'; }
+  renderTips(sport);
+}
+
+// ===== RENDER EVENTS =====
+function renderEvents() {
+  const uEl = document.getElementById('upcoming-events');
+  const pEl = document.getElementById('previous-events');
+
+  uEl.innerHTML = events.upcoming.map(e => `
+    <div class="event-row">
+      <div>
+        <div class="event-match-name">${sportEmoji(e.sport)} ${e.match}</div>
+        <div class="event-meta">
+          <span class="sport-badge badge-${e.sport}" style="font-size:0.68rem;">${e.league}</span>
+          <span class="event-date">📅 ${e.date} — ${e.time}</span>
+          <span style="font-family:'DM Mono',monospace; font-size:0.7rem; color:var(--neon);">💬 ${e.tips} tips</span>
+        </div>
+      </div>
+      <button class="btn btn-ghost" style="padding:8px 16px; font-size:0.8rem; white-space:nowrap;" onclick="filterTips('${e.sport}'); scrollTo('tips')">View Tips</button>
+    </div>
+  `).join('');
+
+  pEl.innerHTML = events.previous.map(e => `
+    <div class="event-row">
+      <div>
+        <div class="event-match-name">${sportEmoji(e.sport)} ${e.match}</div>
+        <div class="event-meta">
+          <span class="sport-badge badge-${e.sport}" style="font-size:0.68rem;">${e.league}</span>
+          <span class="event-date">📅 ${e.date}</span>
+        </div>
+      </div>
+      <div class="event-result">${e.result}</div>
+      <div style="text-align:right;">
+        <div style="font-size:0.8rem; color:var(--muted); margin-bottom:4px;">${e.tip} @ ${e.odds}</div>
+        <div class="${e.outcome==='win'?'status-win':'status-loss'}">${e.outcome==='win'?'✓ WIN':'✗ LOSS'}</div>
+      </div>
+    </div>
+  `).join('');
+}
+
+function switchEventTab(tab, btn) {
+  document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  document.getElementById('upcoming-events').classList.toggle('hidden', tab!=='upcoming');
+  document.getElementById('previous-events').classList.toggle('hidden', tab!=='previous');
+}
+
+// ===== RENDER LEADERBOARD =====
+function renderLeaderboard() {
+  const list = document.getElementById('leaderboard-list');
+  const medals = ['🥇','🥈','🥉','4','5'];
+  list.innerHTML = leaderboard.map((u,i) => `
+    <div class="lb-row">
+      <div class="lb-rank" style="color:${i<3?['#ffd166','#c0c0c0','#cd7f32'][i]:'var(--muted)'}">${medals[i]||i+1}</div>
+      <div>
+        <div class="lb-name">${u.name}</div>
+        <div class="lb-tips">${u.tips} tips posted</div>
+      </div>
+      <div class="lb-rate">${u.rate}</div>
+      <div class="lb-profit">${u.profit}</div>
+    </div>
+  `).join('');
+}
+
+// ===== AUTH =====
+function openModal(id) { document.getElementById('modal-'+id).classList.add('open'); }
+function closeModal(id) { document.getElementById('modal-'+id).classList.remove('open'); }
+function switchModal(from, to) { closeModal(from); setTimeout(()=>openModal(to), 200); }
+
+function doRegister() {
+  const name = document.getElementById('reg-name').value.trim();
+  const username = document.getElementById('reg-username').value.trim();
+  const email = document.getElementById('reg-email').value.trim();
+  const password = document.getElementById('reg-password').value;
+  if (!name||!username||!email||!password) return showToast('Please fill all fields.', 'error');
+  if (password.length < 8) return showToast('Password must be at least 8 characters.', 'error');
+  const users = DB.get('users') || [];
+  if (users.find(u=>u.email===email)) return showToast('Email already registered.', 'error');
+  const user = { id: Date.now(), name, username, email, password, tips:0, wins:0, joined: new Date().toISOString() };
+  users.push(user);
+  DB.set('users', users);
+  currentUser = user;
+  DB.set('user', user);
+  closeModal('register');
+  updateAuthUI();
+  showToast('Welcome to BetEdge Pro, '+name+'! 🎉', 'success');
+}
+
+function doLogin() {
+  const email = document.getElementById('login-email').value.trim();
+  const password = document.getElementById('login-password').value;
+  if (!email||!password) return showToast('Please fill all fields.', 'error');
+  const users = DB.get('users') || [];
+  const user = users.find(u=>u.email===email&&u.password===password);
+  if (!user) return showToast('Invalid email or password.', 'error');
+  currentUser = user;
+  DB.set('user', user);
+  closeModal('login');
+  updateAuthUI();
+  showToast('Welcome back, '+user.name+'! 👋', 'success');
+}
+
+function logout() {
+  currentUser = null;
+  DB.set('user', null);
+  updateAuthUI();
+  showToast('Signed out successfully.', 'success');
+}
+
+function updateAuthUI() {
+  const navAuth = document.getElementById('nav-auth');
+  const navUser = document.getElementById('nav-user');
+  const gate = document.getElementById('post-tip-gate');
+  const form = document.getElementById('post-tip-form');
+  const profileLocked = document.getElementById('profile-locked');
+  const profileStats = document.getElementById('profile-stats');
+
+  if (currentUser) {
+    navAuth.classList.add('hidden');
+    navUser.classList.remove('hidden');
+    const initials = currentUser.name.split(' ').map(n=>n[0]).join('').slice(0,2).toUpperCase();
+    document.getElementById('nav-avatar').textContent = initials;
+    gate.classList.add('hidden');
+    form.classList.remove('hidden');
+    profileLocked.classList.add('hidden');
+    profileStats.classList.remove('hidden');
+    document.getElementById('profile-avatar').textContent = initials;
+    document.getElementById('profile-name').textContent = currentUser.name+' (@'+currentUser.username+')';
+    document.getElementById('profile-email').textContent = currentUser.email;
+    updateMyStats();
+  } else {
+    navAuth.classList.remove('hidden');
+    navUser.classList.add('hidden');
+    gate.classList.remove('hidden');
+    form.classList.add('hidden');
+    profileLocked.classList.remove('hidden');
+    profileStats.classList.add('hidden');
+  }
+}
+
+function updateMyStats() {
+  if (!currentUser) return;
+  const myTips = tips.filter(t => t.poster === currentUser.username);
+  const myWins = myTips.filter(t => t.status === 'win').length;
+  document.getElementById('stat-my-tips').textContent = myTips.length;
+  document.getElementById('stat-my-wins').textContent = myWins;
+  document.getElementById('stat-my-rate').textContent = myTips.length ? Math.round((myWins/myTips.length)*100)+'%' : '—';
+}
+
+// ===== POST TIP =====
+function submitTip() {
+  if (!currentUser) return showToast('Please sign in to post tips.', 'error');
+  const match = document.getElementById('tip-match').value.trim();
+  const sport = document.getElementById('tip-sport').value;
+  const pick = document.getElementById('tip-pick').value.trim();
+  const odds = parseFloat(document.getElementById('tip-odds').value);
+  const confidence = parseInt(document.getElementById('tip-confidence').value);
+  const analysis = document.getElementById('tip-analysis').value.trim();
+  const date = document.getElementById('tip-date').value;
+  if (!match||!pick||!odds||!analysis) return showToast('Please fill all required fields.', 'error');
+  if (odds < 1) return showToast('Odds must be at least 1.00', 'error');
+
+  const colors = ['#00d2ff','#7b2fff','#06ffa5','#ffd166','#ff9f1c','#ff4d6d'];
+  const newTip = {
+    id: Date.now(), match, sport, pick, odds, confidence, analysis, date,
+    poster: currentUser.username,
+    posterColor: colors[Math.floor(Math.random()*colors.length)],
+    time: 'Just now', status: 'pending'
+  };
+
+  tips.unshift(newTip);
+  DB.set('tips', tips);
+  renderTips(filterActive);
+
+  // Add to upcoming events
+  if (date) {
+    events.upcoming.unshift({ id: Date.now()+1, match, league: capitalize(sport), date: new Date(date).toLocaleDateString('en-KE',{day:'numeric',month:'short',year:'numeric'}), time: new Date(date).toLocaleTimeString('en-KE',{hour:'2-digit',minute:'2-digit'}), sport, tips: 1 });
+    DB.set('events', events);
+    renderEvents();
+  }
+
+  // Clear form
+  ['tip-match','tip-pick','tip-odds','tip-analysis','tip-date'].forEach(id => document.getElementById(id).value = '');
+  document.getElementById('tip-confidence').value = '3';
+
+  updateMyStats();
+  showToast('Tip posted successfully! 🎯', 'success');
+  scrollTo('tips');
+}
+
+// ===== PAYMENTS =====
+function openPaymentModal(method, plan) {
+  openModal('payment');
+  switchPayTab(method);
+  if (plan) {
+    const planMap = { basic:'499', pro:'1499' };
+    const mpesaSelect = document.getElementById('mpesa-plan');
+    if (mpesaSelect && planMap[plan]) mpesaSelect.value = planMap[plan];
+  }
+}
+
+function switchPayTab(tab) {
+  ['mpesa','crypto'].forEach(t => {
+    document.getElementById('pm-tab-'+t).classList.toggle('active', t===tab);
+    document.getElementById('pm-'+t).classList.toggle('active', t===tab);
+  });
+}
+
+const wallets = {
+  btc: '1A1zP1eP5QGefi2DMPTfTL5SLmv7Divf1N',
+  usdt: 'TN1HbAcNMNXxkdmUbmZ6JxWzAtqnL9D6d4',
+  eth: '0x742d35Cc6634C0532925a3b844Bc454e4438f44e',
+  bnb: '0x742d35Cc6634C0532925a3b844Bc454e4438f44e',
+};
+
+function updateWallet() {
+  const cur = document.getElementById('crypto-currency').value;
+  document.getElementById('wallet-addr').textContent = wallets[cur];
+}
+
+function copyWallet() {
+  const addr = document.getElementById('wallet-addr').textContent;
+  navigator.clipboard.writeText(addr).then(() => showToast('Wallet address copied! 📋', 'success'));
+}
+
+function processMpesa() {
+  const phone = document.getElementById('mpesa-phone').value.trim();
+  const plan = document.getElementById('mpesa-plan').value;
+  if (!phone) return showToast('Please enter your M-Pesa number.', 'error');
+  if (!/^(0|\+254|254)[0-9]{9}$/.test(phone.replace(/\s/g,''))) return showToast('Please enter a valid Kenyan phone number.', 'error');
+  showToast('STK Push sent to '+phone+' for KES '+plan+'. Check your phone! 📱', 'success');
+  closeModal('payment');
+}
+
+function processCrypto() {
+  const txid = document.getElementById('crypto-txid').value.trim();
+  if (!txid) return showToast('Please paste your transaction hash.', 'error');
+  if (txid.length < 20) return showToast('Invalid transaction hash.', 'error');
+  showToast('Payment submitted! We\'ll verify and activate within 30 mins. ₿', 'success');
+  closeModal('payment');
+}
+
+// ===== TOAST =====
+function showToast(msg, type='success') {
+  const t = document.getElementById('toast');
+  t.textContent = (type==='success'?'✓ ':'✗ ') + msg;
+  t.className = 'toast show '+type;
+  setTimeout(() => t.classList.remove('show'), 3500);
+}
+
+// ===== SCROLL =====
+function scrollTo(id) { document.getElementById(id)?.scrollIntoView({ behavior:'smooth', block:'start' }); }
+function scrollToTop() { window.scrollTo({ top:0, behavior:'smooth' }); }
+
+// ===== CLOSE MODAL ON OVERLAY =====
+document.querySelectorAll('.modal-overlay').forEach(overlay => {
+  overlay.addEventListener('click', e => { if (e.target === overlay) overlay.classList.remove('open'); });
+});
+
+// ===== CLOSE MODAL ON ESC =====
+document.addEventListener('keydown', e => {
+  if (e.key === 'Escape') document.querySelectorAll('.modal-overlay.open').forEach(m => m.classList.remove('open'));
+});
+
+// ===== INIT =====
+renderTips('all');
+filterTips('all');
+renderEvents();
+renderLeaderboard();
+updateAuthUI();
+
+// Animate stats counters
+function animateCounter(el, end, suffix='') {
+  let start = 0; const dur = 2000; const step = dur / end;
+  const timer = setInterval(() => {
+    start += Math.ceil(end/60);
+    if (start >= end) { el.innerHTML = end.toLocaleString() + (suffix?`<span>${suffix}</span>`:''); clearInterval(timer); }
+    else { el.innerHTML = start.toLocaleString() + (suffix?`<span>${suffix}</span>`:''); }
+  }, 16);
+}
+
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      animateCounter(document.getElementById('stat-tips'), 2847, '');
+      animateCounter(document.getElementById('stat-members'), 12304, '');
+      observer.disconnect();
+    }
+  });
+}, { threshold: 0.5 });
+
+const heroSection = document.querySelector('.stats-row');
+if (heroSection) observer.observe(heroSection);
+</script>
+</body>
+</html>
